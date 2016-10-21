@@ -15,14 +15,20 @@ var connection = mysql.createConnection({
 //CONNECT TO MYSQL
 connection.connect(function(err) {
    if (err) throw err;
-   console.log("connected as id " + connection.threadId);
+   console.log("Welcome to The Lash Shop!");
+   console.log("Connected as id " + connection.threadId);
+   console.log("---------------------------");
+
    // start();
 });
 
-
-
-
-
+//display all items
+function display () {
+	connection.query('SELECT * FROM products', function(err, res) {
+       console.log(res);
+});
+}
+display();
 
 
 
