@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/sandraduarte/Bamazon#readme",
   "dependencies": {
-    "inquirer": "^1.2.2"
+    "inquirer": "^1.2.2",
+    "mysql": "^2.11.1"
   }
 }
