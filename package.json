@@ -1,0 +1,26 @@
+{
+  "name": "bamazon",
+  "version": "1.0.0",
+  "description": "an Amazon-like storefront with the MySQL skills",
+  "main": "BamazonCustomer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandraduarte/Bamazon.git"
+  },
+  "keywords": [
+    "amazon",
+    "mysql"
+  ],
+  "author": "smd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sandraduarte/Bamazon/issues"
+  },
+  "homepage": "https://github.com/sandraduarte/Bamazon#readme",
+  "dependencies": {
+    "inquirer": "^1.2.2"
+  }
+}
