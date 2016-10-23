@@ -16,15 +16,14 @@ var connection = mysql.createConnection({
 connection.connect(function(err) {
     if (err) throw err;
     console.log("Welcome to The Lash Shop!");
-    // console.log("Connected as id " + connection.threadId);
     console.log("---------------------------");
+    //SHOW START MENU
     start();
-
 
 });
 
 
-//START, menu select query
+//START MENU, select query type
 function start() {
     inquirer.prompt({
         name: "selectQuery",
@@ -34,7 +33,8 @@ function start() {
     }).then(function(answer) {
         switch (answer.selectQuery) {
             case "View Products For Sale":
-                displayProducts()();
+                displayProducts();
+
                 break;
             case "View Low Inventory":
                 lowInv();
@@ -50,12 +50,12 @@ function start() {
 
     });
 }
-//END start
+//END START MENU
 
 
-//BEGIN PRODUCTS FOR SALE FUNCTION
+//PRODUCTS FOR SALE FUNCTION
 
-// displayProducts the application and show all the products
+// Display products for sale
 
 function displayProducts() {
     connection.query('SELECT * FROM Products', function(err, res) {
@@ -69,7 +69,7 @@ function displayProducts() {
 }
 
 
-// Choose an Item id and select a Quantity
+// Choose an Item id and select a Quantity to purchase
 function chooseItems() {
 
     inquirer.prompt({
@@ -116,26 +116,21 @@ function chooseItems() {
                                     });
 
                                 });
+                            } else {
+                                console.log("Insufficient Quantity. We only have " +  chosenItemQty + ". Start over, please.");
+                                chooseItems();
                             }
                         });
                     }
                 }
             });
         }
-
-
-
-
-
-
     );
 }
 //END PRODUCTS FOR SALE FUNCTION
 
 //BEGIN VIEW LOW INVENTORY
 function lowInv() {
-
-
     connection.query('SELECT * FROM Products WHERE StockQuantity < 50', function(err, res) {
         console.log("Viewing products with quantities less than 50.");
 
@@ -161,17 +156,17 @@ function lowInv() {
 
 //END VIEW LOW INVENTORY
 
-//BEGIN ADD NEW INVENTORY
+// ADD NEW PRODUCT
 
 function addNew() {
     inquirer.prompt([{
         name: "item",
         type: "input",
-        message: "What is the item you would like to submit?"
+        message: "What is the product you would like to submit?"
     }, {
         name: "department",
         type: "input",
-        message: "What department would you like to place your item in?"
+        message: "What department would you like to place your product?"
     }, {
         name: "price",
         type: "input",
@@ -194,7 +189,7 @@ function addNew() {
         });
     });
 }
-//END ADD NEW INVENTORY
+//END ADD NEW product
 
 //ADD ADDITIONAL INVENTORY
 
@@ -222,18 +217,26 @@ function addMore() {
                     }).then(function(answer) {
                         //how many units they want to add
                         var units = answer.quantity;
-
-                        if (chosenItemQty >= parseInt(units)) {
-                            connection.query('UPDATE Products SET StockQuantity = ? + ? WHERE ItemId =?', [chosenItemQty, units, chosenItem], function(err, res) {
+                        connection.query('UPDATE Products SET StockQuantity = ? + ? WHERE ItemId =?', [chosenItemQty, units, chosenItem], function(err, res) {
                                 console.log("------------------------------");
                                 console.log("Inventory updated! ");
 
                                 console.log("------------------------------");
-
-                                start();
+                                inquirer.prompt({
+                                    name: 'continueAdd',
+                                    type: 'confirm',
+                                    message: 'Continue adding inventory?'
+                                }).then(function(answer){
+                                    if(answer.continueAdd === true){
+                                    addMore();
+                                    } else {
+                                     start();
+ 
+                                    }
+                                });
 
                             });
-                        }
+                        
 
                     });
 
