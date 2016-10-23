@@ -1,8 +1,8 @@
 {
-  "name": "bamazon",
+  "name": "Bamazon",
   "version": "1.0.0",
-  "description": "an Amazon-like storefront with the MySQL skills",
-  "main":"BamazonManager.js",
+  "description": "1. Select a Query 2. View Products for Sale 3. View Low Inventory 4. Add to Inventory 5. Add New Product",
+  "main": "BamazonManager.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,11 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/sandraduarte/Bamazon.git"
   },
-  "keywords": [
-    "amazon",
-    "mysql"
-  ],
-  "author": "smd",
+  "keywords": [],
+  "author": "Sandra Duarte",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/sandraduarte/Bamazon/issues"
