@@ -1,13 +1,5 @@
-#BAMAZON MANAGER
+#BAMAZON MANAGER 
 ## An NODE inventory management application.
-
-####Created with :heart: using:
-----------------
-:heavy_plus_sign: MYSQL
-:heavy_plus_sign: MYSQL Workbench
-:heavy_plus_sign: Javascript
-:heavy_plus_sign: Node
-
 
 ###How it Works
 ----------------
@@ -58,4 +50,11 @@ If a manager selects __Add to Inventory__, it will display a prompt that will le
 If a manager selects __Add New Product__, it will allow the manager to add a completely new product to the store.
 
 ![alt text](images/Addnewproduct.png "Add New Product")
+
+####Created with :heart: using:
+----------------
+:heavy_plus_sign: MYSQL
+:heavy_plus_sign: MYSQL Workbench
+:heavy_plus_sign: Javascript
+:heavy_plus_sign: Node
 
